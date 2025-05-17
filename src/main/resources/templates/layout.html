@@ -14,7 +14,12 @@
 <header th:replace="~{fragments/header :: header}">
     header from layout
 </header>
-
+<main>
+    <div layout:fragment="content">
+        <h1>Добро пожаловать в наш прекрасный сервис ShopsApp!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis ea eligendi, facere impedit ipsum nihil perspiciatis ratione! Accusamus architecto aspernatur commodi dicta nihil optio porro quod ratione saepe! Suscipit, voluptatibus?</p>
+    </div>
+</main>
 
 <footer th:insert="~{fragments/footer :: footer}">&copy; 2025 Павел Мировщиков. Все права защищены.</footer>
 

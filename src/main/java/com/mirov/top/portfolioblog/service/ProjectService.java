@@ -30,7 +30,9 @@ public class ProjectService {
 
     public List<Project> findAll()
     {
-        return projectRepository.findAll();
+        List<Project> all = projectRepository.findAll();
+        System.out.println("findall = " + all);
+        return all;
     }
 
 
