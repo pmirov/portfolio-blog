@@ -1,0 +1,33 @@
+<!-- Навигация -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="header">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <span class="code-tag">&lt;</span>
+            <span class="name-highlight">Павел Мировщиков</span>
+            <span class="code-tag">/&gt;</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#home">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/portfolio/allprojects.html">Портфолио</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/portfolio/allitems.html">Блог</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Контакты</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <a href="login.html" class="btn btn-outline-light me-2">Войти</a>
+                <a href="register.html" class="btn btn-primary">Регистрация</a>
+            </div>
+        </div>
+    </div>
+</nav>

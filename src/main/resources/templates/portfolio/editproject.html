@@ -10,14 +10,14 @@
 <form action="" method="post" enctype="multipart/form-data">
     <!-- Заголовок новости -->
     <div class="form-group">
-        <label for="title">Заголовок новости:</label>
+        <label for="title">Название проекта:</label>
         <input type="text" id="title" name="title" value="Текущий заголовок">
     </div>
 
     <!-- Текст новости -->
     <div class="form-group">
-        <label for="content">Текст новости:</label>
-        <textarea id="content" name="content" rows="8">Текущий текст новости...</textarea>
+        <label for="content">Описание проекта:</label>
+        <textarea id="content" name="content" rows="8">Текущее описание проекта....</textarea>
     </div>
 
     <!-- Работа с изображением -->
@@ -43,11 +43,6 @@
         </div>
     </fieldset>
 
-    <!-- Работа с комментариями -->
-    <div class="form-group checkbox-group">
-        <input type="checkbox" id="delete_comments" name="delete_comments" value="1">
-        <label for="delete_comments">Удалить комментарии</label>
-    </div>
 
     <button type="submit">Сохранить изменения</button>
 </form>

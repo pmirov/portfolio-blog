@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProjectService {
@@ -21,16 +22,25 @@ public class ProjectService {
         this.userRepository = userRepository;
     }
 
-    public List<Project> findAllByUserId(Integer userId)
+    public Project findById(Integer id)
     {
-        return projectRepository.findByUserId(userId);
+        return projectRepository.findById(id).orElseThrow();
     }
 
-    public List<Project> findAllPublic()
+    public List<Project> findAll()
     {
-        return projectRepository.findByIsPublicTrue();
+        return projectRepository.findAll();
     }
 
+
+//    public List<Project> findAllPublic()
+//    {
+//        return projectRepository.findByIsPublicTrue();
+//    }
+//    public List<Project> findAllByUserId(Integer userId)
+//    {
+//        return projectRepository.findByUserId(userId);
+//    }
 
 
 }
