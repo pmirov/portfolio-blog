@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Редактировать проект</title>
 </head>
 <body>
+<div layout:fragment="content">
     <h1>Проект</h1>
     <h1 th:text="${project.title}">Название</h1>
     <p th:text="${project.createdAt}">дата создания</p>
@@ -12,6 +15,6 @@
 
     <div><a th:href="@{|/project/edit/${project.id}|}">Редактировать</a></div>
     <div><a th:href="@{|/project/delete/${project.id}|}">Удали это поскорее</a></div>
-
+</div>
 </body>
 </html>

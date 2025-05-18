@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Редактировать проект</title>
 </head>
 <body>
+
+<div layout:fragment="content">
+
 <h1>Редактирование проекта</h1>
 
 <form action="" method="post" enctype="multipart/form-data">
@@ -46,5 +51,6 @@
 
     <button type="submit">Сохранить изменения</button>
 </form>
+</div>
 </body>
 </html>
