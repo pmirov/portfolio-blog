@@ -35,7 +35,9 @@ public class ProjectService {
         return all;
     }
 
-
+    public void update(Project project) {
+        projectRepository.save(project);
+    }
 //    public List<Project> findAllPublic()
 //    {
 //        return projectRepository.findByIsPublicTrue();

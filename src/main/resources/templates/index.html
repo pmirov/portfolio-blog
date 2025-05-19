@@ -39,22 +39,22 @@
 <!-- Портфолио -->
 <section id="portfolio" class="py-5">
     <div class="container">
-        <h2 class="text-center mb-5"><a href="/project">Мои проекты</h2>
+        <h2 class="text-center mb-5"><a href="/project">Мои проекты</a></h2>
         <div class="row g-4">
-            <div class="col-md-6 col-lg-4">
+            <div class="col-md-6 col-lg-4" th:each="project, iterStat : ${projects}" th:if="${iterStat.index} < 3">
                 <div class="card portfolio-card h-100">
                     <div class="card-img-container ">
-                        <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title">Система управления магазином</h5></div>
+                        <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title" th:text="${project.title}">Система управления магазином</h5></div>
 
                         <div class="overlay">
                                 <div class="overlay-content">
-                                <a href="#" class="btn btn-light btn-sm"><i class="fas fa-eye"></i> Подробнее</a>
-                                <a href="#" class="btn btn-light btn-sm"><i class="fab fa-github"></i> GitHub</a>
+                                <a th:href="@{'/project/' + ${project.id}}" class="btn btn-light btn-sm"><i class="fas fa-eye"></i> Подробнее</a>
+                                <a th:href="${project.getGithubUrl()}" th:if="${project.getGithubUrl() != null}" class="btn btn-light btn-sm"><i class="fab fa-github"></i> GitHub</a>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p class="card-text">Оконное приложение управления ассортиментом магазина игрушек.</p>
+                        <p class="card-text" th:text="${project.description}">Оконное приложение управления ассортиментом магазина игрушек.</p>
                         <div class="tech-stack">
                             <span class="badge bg-primary">С#</span>
                             <span class="badge bg-success">Entity Framework</span>
@@ -65,50 +65,50 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card portfolio-card h-100">
-                    <div class="card-img-container ">
-                        <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title">Онлайн-дневник</h5></div>
+<!--            <div class="col-md-6 col-lg-4">-->
+<!--                <div class="card portfolio-card h-100">-->
+<!--                    <div class="card-img-container ">-->
+<!--                        <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title">Онлайн-дневник</h5></div>-->
 
-                        <div class="overlay">
-                            <div class="overlay-content">
-                                <a href="#" class="btn btn-light btn-sm"><i class="fas fa-eye"></i> Подробнее</a>
-                                <a href="#" class="btn btn-light btn-sm"><i class="fab fa-github"></i> GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">Личный онлайн-дневник с возможностью комментирования</p>
-                        <div class="tech-stack">
-                            <span class="badge bg-primary">Java</span>
-                            <span class="badge bg-success">HTML</span>
-                            <span class="badge bg-info">PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card portfolio-card h-100">
-                    <div class="card-img-container ">
-                        <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title">Сайт-визитка</h5></div>
+<!--                        <div class="overlay">-->
+<!--                            <div class="overlay-content">-->
+<!--                                <a href="#" class="btn btn-light btn-sm"><i class="fas fa-eye"></i> Подробнее</a>-->
+<!--                                <a href="#" class="btn btn-light btn-sm"><i class="fab fa-github"></i> GitHub</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+<!--                        <p class="card-text">Личный онлайн-дневник с возможностью комментирования</p>-->
+<!--                        <div class="tech-stack">-->
+<!--                            <span class="badge bg-primary">Java</span>-->
+<!--                            <span class="badge bg-success">HTML</span>-->
+<!--                            <span class="badge bg-info">PostgreSQL</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 col-lg-4">-->
+<!--                <div class="card portfolio-card h-100">-->
+<!--                    <div class="card-img-container ">-->
+<!--                        <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title">Сайт-визитка</h5></div>-->
 
-                        <div class="overlay">
-                            <div class="overlay-content">
-                                <a href="#" class="btn btn-light btn-sm"><i class="fas fa-eye"></i> Подробнее</a>
-                                <a href="#" class="btn btn-light btn-sm"><i class="fab fa-github"></i> GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">Сайт-визитка для коммерческой компании</p>
-                        <div class="tech-stack">
-                            <span class="badge bg-primary">HTML</span>
-                            <span class="badge bg-success">CSS</span>
-                            <span class="badge bg-info">Bootstrap</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!--                        <div class="overlay">-->
+<!--                            <div class="overlay-content">-->
+<!--                                <a href="#" class="btn btn-light btn-sm"><i class="fas fa-eye"></i> Подробнее</a>-->
+<!--                                <a href="#" class="btn btn-light btn-sm"><i class="fab fa-github"></i> GitHub</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+<!--                        <p class="card-text">Сайт-визитка для коммерческой компании</p>-->
+<!--                        <div class="tech-stack">-->
+<!--                            <span class="badge bg-primary">HTML</span>-->
+<!--                            <span class="badge bg-success">CSS</span>-->
+<!--                            <span class="badge bg-info">Bootstrap</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         <div class="text-center mt-4">
             <a href="/project" class="btn btn-outline-primary btn-lg">Все проекты</a>
         </div>

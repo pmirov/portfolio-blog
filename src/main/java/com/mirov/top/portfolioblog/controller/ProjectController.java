@@ -6,9 +6,9 @@ import com.mirov.top.portfolioblog.service.ProjectService;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @Controller
 public class ProjectController {
@@ -21,9 +21,15 @@ public class ProjectController {
     }
 
     @GetMapping("/project")
-    public String diary(Model model) {
+    public String project(Model model) {
         model.addAttribute("projects", projectService.findAll());
         return "project/allprojects";
+    }
+
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("projects", projectService.findAll());
+        return "index";
     }
 
     @GetMapping("/project/{id}")
@@ -34,11 +40,27 @@ public class ProjectController {
 
     @GetMapping("/project/edit/{id}")
     public String edit(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("project",projectService.findById(id));
+        Project project = projectService.findById(id);
+        model.addAttribute("project",project);
+//        model.addAttribute("project",projectService.findById(id));
         return "project/editproject";
 
     }
 
+    @PostMapping("/project/edit")
+    public String edit(@RequestParam Integer id, @ModelAttribute("project") Project project, Model model)
+    {
+
+        Project existProject = projectService.findById(id);
+
+        existProject.setTitle(project.getTitle());
+        existProject.setDescription(project.getDescription());
+        existProject.setGithubUrl(project.getGithubUrl());
+        existProject.setPublic(project.isPublic());
+        existProject.setUpdatedAt(LocalDateTime.now());
+        projectService.update(existProject);
+        return "redirect:/project/"+existProject.getId();
+    }
 
 //    @GetMapping("/project/delete/{id}")
 //    public String delete(@PathVariable Integer id, Model model) {
