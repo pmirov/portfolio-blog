@@ -1,6 +1,7 @@
 package com.mirov.top.portfolioblog.service;
 
 import com.mirov.top.portfolioblog.entity.DiaryEntry;
+import com.mirov.top.portfolioblog.entity.Project;
 import com.mirov.top.portfolioblog.repository.DiaryEntryRepository;
 import com.mirov.top.portfolioblog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,18 @@ public class DiaryEntryService {
         return diaryEntryRepository.findByIsPublicTrue();
     }
 
+    public DiaryEntry findById(Integer id)
+    {
+        return diaryEntryRepository.findById(id).orElseThrow();
+    }
+
+
+    public List<DiaryEntry> findAll()
+    {
+        List<DiaryEntry> all = diaryEntryRepository.findAll();
+        //System.out.println("findall = " + all);
+        return all;
+    }
 
 
 
