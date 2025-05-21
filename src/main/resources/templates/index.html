@@ -66,8 +66,9 @@
                 </div>
             </div>
 
-        <div class="text-center mt-4">
-            <a href="/project" class="btn btn-outline-primary btn-lg">Все проекты</a>
+            <div class="text-center mt-4">
+                <a href="/project" class="btn btn-outline-primary btn-lg">Все проекты</a>
+            </div>
         </div>
     </div>
 </section>
@@ -77,48 +78,25 @@
     <div class="container">
         <h2 class="text-center mb-5">Последние статьи</h2>
         <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-6" th:each="diary, iterStat : ${diaryEntry}" th:if="${iterStat.index} < 3">
                 <div class="card blog-card h-100">
-                    <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title">Делаю сайт-портфолио</h5></div>
+                    <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title" th:text="${diary.title}">Делаю сайт-портфолио</h5></div>
                     <div class="card-body">
                         <div class="post-meta mb-2">
                             <span><i class="far fa-calendar"></i> 10 мая 2023</span>
-                            <span><i class="far fa-comments"></i> 12 комментариев</span>
+<!--                            <span><i class="far fa-comments"></i> 12 комментариев</span>-->
                         </div>
-                        <p class="card-text">Описание моей работы над портфолио...</p>
-                        <a href="blog-post.html" class="btn btn-primary">Читать далее</a>
+                        <p class="card-text" th:text="${diary.content}">Описание моей работы над портфолио...</p>
+                        <a th:href="@{'/diary/' + ${diary.id}}" class="btn btn-light btn-sm">Читать далее</a>
+<!--                        <a th:href="@{'/diary/' + ${diary.id}}" class="btn btn-light btn-sm" class="btn btn-primary">Читать далее</a>-->
+
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card blog-card h-100">
-                    <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title">Хожу на работу</h5></div>
-                    <div class="card-body">
-                        <div class="post-meta mb-2">
-                            <span><i class="far fa-calendar"></i> 2 мая 2023</span>
-                            <span><i class="far fa-comments"></i> 8 комментариев</span>
-                        </div>
-                        <p class="card-text">Рассказываю как хожу на работу...</p>
-                        <a href="blog-post.html" class="btn btn-primary">Читать далее</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card blog-card h-100">
-                    <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title">Отдыхаю</h5></div>
-                    <div class="card-body">
-                        <div class="post-meta mb-2">
-                            <span><i class="far fa-calendar"></i> 25 апреля 2023</span>
-                            <span><i class="far fa-comments"></i> 15 комментариев</span>
-                        </div>
-                        <p class="card-text">Рассказываю как я отдыхаю...</p>
-                        <a href="blog-post.html" class="btn btn-primary">Читать далее</a>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div class="text-center mt-4">
-            <a href="blog.html" class="btn btn-outline-primary btn-lg">Все статьи</a>
+            <a href="/diary" class="btn btn-outline-primary btn-lg">Все статьи</a>
         </div>
     </div>
 </section>

@@ -8,15 +8,30 @@
 </head>
 <body>
 
-<div layout:fragment="content">
-<h1>Проекты</h1>
+<!--<div layout:fragment="content">-->
+<!--<h1>Проекты</h1>-->
 
 
-<div th:each="project : ${projects}">
-    <div><a th:href="@{|/project/${project.id}|}" th:text="${project.title}">Проект 1</a></div>
-    <div th:text="${project.description}">Описание проекта</div>
-</div>
+<!--<div th:each="project : ${projects}">-->
+<!--    <div><a th:href="@{|/project/${project.id}|}" th:text="${project.title}">Проект 1</a></div>-->
+<!--    <div th:text="${project.description}">Описание проекта</div>-->
+<!--</div>-->
 
+    <div layout:fragment="content" class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="text-primary text-center mb-4 pt-4" >Мои проекты</h1>
+
+                <div th:each="project : ${projects}" class="mb-4 p-3 border rounded shadow-sm">
+                    <h2 class="text-center">
+                        <a th:href="@{|/project/${project.id}|}" th:text="${project.title}" class=" text-primary text-decoration-none text-dark">Проект 1</a>
+                    </h2>
+                    <p class="text-center" th:text="${project.description}">Описание проекта</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </div>
 </body>

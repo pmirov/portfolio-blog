@@ -25,45 +25,43 @@ public class DiaryController {
     }
 
     @GetMapping("/diary")
-    public String diary(Model model) {
-        model.addAttribute("diary", diaryEntryService.findAll());
-        return "diary/all-items";
+    public String showAllItems(Model model) {
+        model.addAttribute("allitems", diaryEntryService.findAll());
+        return "diary/allitems";
     }
 
-    @GetMapping("/")
-    public String home(Model model) {
-        model.addAttribute("diary", diaryEntryService.findAll());
-        return "index";
-    }
+//    @GetMapping("/")
+//    public String gohome(Model model) {
+//        model.addAttribute("diaryEntry", diaryEntryService.findAll());
+//        return "index";
+//    }
 
     @GetMapping("/diary/{id}")
-    public String info(@PathVariable("id") Integer id, Model model) {
-        model.addAttribute("diary",diaryEntryService.findById(id));
-        return "diary/fullarticle";
+    public String diaryInfo(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("diaryEntry",diaryEntryService.findById(id));
+        return "diary/iteminfo";
     }
 
     @GetMapping("/diary/edit/{id}")
-    public String edit(@PathVariable("id") Integer id, Model model) {
+    public String diaryEdit(@PathVariable("id") Integer id, Model model) {
        DiaryEntry diaryEntry = diaryEntryService.findById(id);
         model.addAttribute("diaryEntry",diaryEntry);
 //        model.addAttribute("project",projectService.findById(id));
-        return "diary/editentry";
+        return "diary/edititem";
 
     }
 
     @PostMapping("/diary/edit")
-    public String edit(@RequestParam Integer id, @ModelAttribute("project") DiaryEntry diaryEntry, Model model)
+    public String diaryEdit(@RequestParam Integer id, @ModelAttribute("diaryEntry") DiaryEntry diaryEntry, Model model)
     {
 
         DiaryEntry existDiaryEntry = diaryEntryService.findById(id);
 
-        existDiaryEntry.
-        existProject.setTitle(project.getTitle());
-        existProject.setDescription(project.getDescription());
-        existProject.setGithubUrl(project.getGithubUrl());
-        existProject.setPublic(project.isPublic());
-        existProject.setUpdatedAt(LocalDateTime.now());
-        projectService.update(existProject);
-        return "redirect:/project/"+existProject.getId();
+        existDiaryEntry.setTitle(diaryEntry.getTitle());
+        existDiaryEntry.setContent(diaryEntry.getContent());
+        existDiaryEntry.setPublic(diaryEntry.isPublic());
+        existDiaryEntry.setUpdatedAt(LocalDateTime.now());
+        diaryEntryService.update(existDiaryEntry);
+        return "redirect:/diary/"+existDiaryEntry.getId();
     }
 }

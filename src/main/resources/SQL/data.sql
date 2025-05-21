@@ -8,3 +8,8 @@ INSERT INTO projects (user_id, title, description, is_public, github_url) VALUES
                                                                               (1, 'Project Beta', 'Description of Project Beta', FALSE, 'http://github.com/user/project-beta'),
                                                                               (2, 'Project Gamma', 'Description of Project Gamma', TRUE, 'http://github.com/user/project-gamma');
 
+INSERT INTO diary_entries (user_id, title, content, is_public)
+VALUES
+    (1, 'День первый', 'Сегодня я начал вести дневник. Всё новое ощущается странным и захватывающим.', TRUE),
+    (1, 'Мои мысли', 'Душевные переживания не дают покоя, но я пытаюсь найти светлые моменты в каждом дне.', TRUE),
+    (1, 'Новые горизонты', 'Сегодня мне удалось сделать маленький шаг к большой цели. Жизнь прекрасна!', TRUE);

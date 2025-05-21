@@ -2,21 +2,26 @@ package com.mirov.top.portfolioblog.controller;
 
 import com.mirov.top.portfolioblog.entity.Project;
 import com.mirov.top.portfolioblog.repository.ProjectRepository;
+import com.mirov.top.portfolioblog.service.DiaryEntryService;
 import com.mirov.top.portfolioblog.service.ProjectService;
+import com.mirov.top.portfolioblog.service.UserService;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Scanner;
 
 @Controller
 public class ProjectController {
     private ProjectService projectService;
+    private DiaryEntryService diaryEntryService;
     private final ProjectRepository projectRepository;
 
-    public ProjectController(ProjectService projectService, ProjectRepository projectRepository) {
+    public ProjectController(DiaryEntryService diaryEntryService, ProjectService projectService, ProjectRepository projectRepository) {
         this.projectService = projectService;
+        this.diaryEntryService = diaryEntryService;
         this.projectRepository = projectRepository;
     }
 
@@ -29,6 +34,7 @@ public class ProjectController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("projects", projectService.findAll());
+        model.addAttribute("diaryEntry", diaryEntryService.findAll());
         return "index";
     }
 

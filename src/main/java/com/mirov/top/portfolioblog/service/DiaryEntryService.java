@@ -42,6 +42,8 @@ public class DiaryEntryService {
         return all;
     }
 
-
+    public void update(DiaryEntry diaryEntry) {
+        diaryEntryRepository.save(diaryEntry);
+    }
 
 }
