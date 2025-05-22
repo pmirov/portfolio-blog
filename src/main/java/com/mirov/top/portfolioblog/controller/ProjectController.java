@@ -68,11 +68,11 @@ public class ProjectController {
         return "redirect:/project/"+existProject.getId();
     }
 
-//    @GetMapping("/project/delete/{id}")
-//    public String delete(@PathVariable Integer id, Model model) {
-//        projectService.delete(id);
-//        return "redirect:/project";
-//    }
+    @GetMapping("/project/delete/{id}")
+    public String delete(@PathVariable Integer id, Model model) {
+        projectService.delete(id);
+        return "redirect:/project";
+    }
 
 
 

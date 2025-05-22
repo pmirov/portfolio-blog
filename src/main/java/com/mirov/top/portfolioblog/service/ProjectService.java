@@ -38,6 +38,12 @@ public class ProjectService {
     public void update(Project project) {
         projectRepository.save(project);
     }
+
+    public void delete(Integer id) {
+        projectRepository.deleteById(id);
+    }
+
+
 //    public List<Project> findAllPublic()
 //    {
 //        return projectRepository.findByIsPublicTrue();

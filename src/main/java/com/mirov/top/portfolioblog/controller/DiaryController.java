@@ -64,4 +64,10 @@ public class DiaryController {
         diaryEntryService.update(existDiaryEntry);
         return "redirect:/diary/"+existDiaryEntry.getId();
     }
+
+    @GetMapping("/diary/delete/{id}")
+    public String delete(@PathVariable Integer id, Model model) {
+        diaryEntryService.delete(id);
+        return "redirect:/diary";
+    }
 }
