@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content" class="container mt-5">
+<h1>Create Diary Entry</h1>
+<form th:action="@{/diary/new}" th:object="${diaryEntry}" method="post">
+  <div>
+    <label for="title">Title:</label>
+    <input type="text" id="title" th:field="*{title}" placeholder="Enter title" required />
+  </div>
+  <div>
+    <label for="content">Content:</label>
+    <textarea id="content" th:field="*{content}" placeholder="Enter content" required></textarea>
+  </div>
+<!--  <div>-->
+<!--    <label for="isPublic">Public:</label>-->
+<!--    <input type="checkbox" id="isPublic" th:field="*{isPublic}" />-->
+<!--  </div>-->
+  <div>
+    <button type="submit">Create</button>
+  </div>
+</form>
+</div>
+</body>
+</html>

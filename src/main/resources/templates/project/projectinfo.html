@@ -4,17 +4,35 @@
       layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Редактировать проект</title>
+    <title>Проект</title>
 </head>
 <body>
-<div layout:fragment="content">
-    <h1>Проект</h1>
-    <h1 th:text="${project.title}">Название</h1>
-    <p th:text="${project.createdAt}">дата создания</p>
-    <p th:text="${project.description}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cum modi natus, neque qui quos reiciendis repellat similique sint tenetur!</p>
 
-    <div><a th:href="@{|/project/edit/${project.id}|}">Редактировать</a></div>
-    <div><a th:href="@{|/project/delete/${project.id}|}">Удали это поскорее</a></div>
+<div layout:fragment="content" class="container pt-5 mt-5">
+    <!-- Центрирование с помощью row и justify-content-center -->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-body text-center">
+                    <!-- Заголовок записи -->
+                    <h2 th:text="${project.title}">Название провекта</h2>
+                    <!-- Дата создания записи -->
+                    <p class="card-text text-muted" th:text="${project.createdAt}">Дата создания</p>
+                    <!-- Контент записи -->
+                    <p class="card-text" th:text="${project.description}">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cum modi natus, neque qui quos reiciendis repellat similique sint tenetur!
+                    </p>
+                    <!-- Кнопки действий -->
+                    <div class="d-flex justify-content-center gap-3">
+                        <a th:href="@{|/project/edit/${project.id}|}" class="btn btn-outline-primary">Редактировать</a>
+                        <a th:href="@{|/project/delete/${project.id}|}" class="btn btn-outline-danger">Удалить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 </body>
 </html>

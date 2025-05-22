@@ -7,6 +7,7 @@ import com.mirov.top.portfolioblog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -50,4 +51,10 @@ public class DiaryEntryService {
         diaryEntryRepository.deleteById(id);
     }
 
+    public DiaryEntry create(DiaryEntry diaryEntry) {
+        LocalDateTime now = LocalDateTime.now();
+        diaryEntry.getCreatedAt();
+        diaryEntry.getUpdatedAt();
+        return diaryEntryRepository.save(diaryEntry);
+    }
 }

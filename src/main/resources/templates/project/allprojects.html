@@ -28,7 +28,9 @@
                     </h2>
                     <p class="text-center" th:text="${project.description}">Описание проекта</p>
                 </div>
-
+                <div class="d-flex justify-content-center mt-4">
+                    <a th:href="@{/diary/new}" class="btn btn-success">Добавить новый проект</a>
+                </div>
             </div>
         </div>
     </div>

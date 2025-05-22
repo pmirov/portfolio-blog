@@ -57,6 +57,10 @@ public class DiaryEntry {
         this.updatedAt = updatedAt;
     }
 
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
     public boolean isPublic() {
         return isPublic;
     }

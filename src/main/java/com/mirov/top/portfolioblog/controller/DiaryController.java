@@ -30,11 +30,7 @@ public class DiaryController {
         return "diary/allitems";
     }
 
-//    @GetMapping("/")
-//    public String gohome(Model model) {
-//        model.addAttribute("diaryEntry", diaryEntryService.findAll());
-//        return "index";
-//    }
+
 
     @GetMapping("/diary/{id}")
     public String diaryInfo(@PathVariable("id") Integer id, Model model) {
@@ -69,5 +65,22 @@ public class DiaryController {
     public String delete(@PathVariable Integer id, Model model) {
         diaryEntryService.delete(id);
         return "redirect:/diary";
+    }
+
+    @GetMapping("/diary/new")
+    public String showCreateForm(Model model) {
+        model.addAttribute("diaryEntry", new DiaryEntry());
+        return "diary/new";
+    }
+
+    @PostMapping("/diary/new")
+    public String createDiaryItem(@ModelAttribute("diaryEntry") DiaryEntry diaryEntry, Model model) {
+        LocalDateTime now = LocalDateTime.now();
+        diaryEntry.setTitle(diaryEntry.getTitle());
+        diaryEntry.setContent(diaryEntry.getContent());
+        diaryEntry.setCreatedAt(now);
+        diaryEntry.setUpdatedAt(now);
+        DiaryEntry createdEntry = diaryEntryService.create(diaryEntry);
+        return "redirect:/diary/"+createdEntry.getId();
     }
 }
