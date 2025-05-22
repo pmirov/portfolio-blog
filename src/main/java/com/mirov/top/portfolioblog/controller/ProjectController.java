@@ -1,6 +1,8 @@
 package com.mirov.top.portfolioblog.controller;
 
+import com.mirov.top.portfolioblog.entity.DiaryEntry;
 import com.mirov.top.portfolioblog.entity.Project;
+import com.mirov.top.portfolioblog.entity.User;
 import com.mirov.top.portfolioblog.repository.ProjectRepository;
 import com.mirov.top.portfolioblog.service.DiaryEntryService;
 import com.mirov.top.portfolioblog.service.ProjectService;
@@ -18,11 +20,14 @@ public class ProjectController {
     private ProjectService projectService;
     private DiaryEntryService diaryEntryService;
     private final ProjectRepository projectRepository;
+    private final UserService userService;
 
-    public ProjectController(DiaryEntryService diaryEntryService, ProjectService projectService, ProjectRepository projectRepository) {
+    public ProjectController(DiaryEntryService diaryEntryService, ProjectService projectService,
+                             ProjectRepository projectRepository, UserService userService) {
         this.projectService = projectService;
         this.diaryEntryService = diaryEntryService;
         this.projectRepository = projectRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/project")
@@ -67,6 +72,26 @@ public class ProjectController {
         projectService.update(existProject);
         return "redirect:/project/"+existProject.getId();
     }
+
+    @GetMapping("/project/newproject")
+    public String showCreateForm(Model model) {
+        model.addAttribute("project", new Project());
+        return "project/newproject";
+    }
+
+    @PostMapping("/project/newproject")
+    public String createProject(@ModelAttribute("project") Project project, Model model) {
+        User user = userService.findById(1);
+        project.setUser(user);
+        LocalDateTime now = LocalDateTime.now();
+        project.setTitle(project.getTitle());
+        project.setDescription(project.getDescription());
+        project.setCreatedAt(now);
+        project.setUpdatedAt(now);
+        Project createdProject = projectService.create(project);
+        return "redirect:/project/"+createdProject.getId();
+    }
+
 
     @GetMapping("/project/delete/{id}")
     public String delete(@PathVariable Integer id, Model model) {

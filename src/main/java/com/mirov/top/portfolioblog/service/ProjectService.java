@@ -1,11 +1,13 @@
 package com.mirov.top.portfolioblog.service;
 
+import com.mirov.top.portfolioblog.entity.DiaryEntry;
 import com.mirov.top.portfolioblog.entity.Project;
 import com.mirov.top.portfolioblog.repository.ProjectRepository;
 import com.mirov.top.portfolioblog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +45,12 @@ public class ProjectService {
         projectRepository.deleteById(id);
     }
 
-
+    public Project create(Project project) {
+        LocalDateTime now = LocalDateTime.now();
+        project.getCreatedAt();
+        project.getUpdatedAt();
+        return projectRepository.save(project);
+    }
 //    public List<Project> findAllPublic()
 //    {
 //        return projectRepository.findByIsPublicTrue();

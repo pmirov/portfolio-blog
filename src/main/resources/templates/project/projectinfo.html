@@ -15,9 +15,9 @@
             <div class="card shadow">
                 <div class="card-body text-center">
                     <!-- Заголовок записи -->
-                    <h2 th:text="${project.title}">Название провекта</h2>
+                    <h2 th:text="${project.title}">Название проекта</h2>
                     <!-- Дата создания записи -->
-                    <p class="card-text text-muted" th:text="${project.createdAt}">Дата создания</p>
+                    <p class="card-text text-muted" th:text="${#temporals.format(project.createdAt, 'dd.MM.yyyy HH:mm')}">Дата создания</p>
                     <!-- Контент записи -->
                     <p class="card-text" th:text="${project.description}">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cum modi natus, neque qui quos reiciendis repellat similique sint tenetur!
@@ -26,6 +26,7 @@
                     <div class="d-flex justify-content-center gap-3">
                         <a th:href="@{|/project/edit/${project.id}|}" class="btn btn-outline-primary">Редактировать</a>
                         <a th:href="@{|/project/delete/${project.id}|}" class="btn btn-outline-danger">Удалить</a>
+                        <a th:href="@{/project}" class="btn btn-outline-primary">Перейти в список проектов</a>
                     </div>
                 </div>
             </div>

@@ -26,7 +26,17 @@ public class Project {
 
     @ManyToOne(fetch = FetchType.LAZY) //разобраться
     @JoinColumn(name="user_id", nullable=false)
+
+
     private User user;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
 
     @Column(nullable = false,length = 255)
     private String title;

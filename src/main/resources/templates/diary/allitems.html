@@ -16,20 +16,22 @@
             <h1 class="text-primary text-center mb-4 pt-4">Мой дневник</h1>
 
             <!-- Список записей -->
-            <div th:each="diary : ${allitems}" class="mb-4 p-3 border rounded shadow-sm">
-                <h2 class="text-center">
+            <div th:each="diary : ${allitems}" class="mb-4 p-3 border rounded shadow-sm text-center" >
+                <h2 class="text-center h5">
                     <a th:href="@{|/diary/${diary.id}|}"
                        th:text="${diary.title}"
                        class="text-primary text-decoration-none text-dark">
                         Проект 1
                     </a>
                 </h2>
-                <p class="text-center" th:text="${diary.content}">Описание проекта</p>
+                <p class="card-text text-muted" th:text="${#temporals.format(diary.createdAt, 'dd.MM.yyyy HH:mm')}">Дата создания</p>
+
+                <p class="text-center" th:text="${diary.content}">Описание заметки</p>
             </div>
 
             <!-- Кнопка "Добавить запись" под списком записей -->
-            <div class="d-flex justify-content-center mt-4">
-                <a th:href="@{/diary/new}" class="btn btn-success">Добавить запись</a>
+            <div class="d-flex justify-content-center mt-4 mb-4">
+                <a th:href="@{/diary/new}" class="btn btn-success">Добавить новую заметку</a>
             </div>
         </div>
     </div>

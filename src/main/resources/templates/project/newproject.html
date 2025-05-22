@@ -3,8 +3,8 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout.html}">
 <head>
-    <meta charset="UTF-8">
-    <title>Новая заметка</title>
+  <meta charset="UTF-8">
+  <title>Новый проект</title>
 </head>
 <body>
 <div layout:fragment="content" class="container pt-5 mt-5">
@@ -13,21 +13,21 @@
       <!-- Оформление в виде карточки -->
       <div class="card shadow">
         <div class="card-header bg-primary text-white">
-          <h2 class="mb-0">Создайте новую заметку:</h2>
+          <h2 class="mb-0">Создайте новый проект</h2>
         </div>
         <div class="card-body">
-          <form th:action="@{/diary/new}" th:object="${diaryEntry}" method="post">
+          <form th:action="@{/project/newproject}" th:object="${project}" method="post">
 
             <!-- Заголовок записи -->
             <div class="form-group mb-3">
-              <label for="title" class="mb-2 fw-bold">Заголовок заметки:</label>
-              <input type="text" id="title" th:field="*{title}" class="form-control" placeholder="Введите заголовок заметки" required>
+              <label for="title" class="mb-2 fw-bold">Название проекта:</label>
+              <input type="text" id="title" th:field="*{title}" class="form-control" placeholder="Введите название проекта" required>
             </div>
 
             <!-- Содержимое записи -->
             <div class="form-group mb-4">
-              <label for="content" class="mb-2 fw-bold">Заметка:</label>
-              <textarea id="content" th:field="*{content}" rows="8" class="form-control" placeholder="Напишите заметку" required></textarea>
+              <label for="content" class="mb-2 fw-bold">Описание проекта:</label>
+              <textarea id="content" th:field="*{description}" rows="8" class="form-control" placeholder="Введите описание проекта" required></textarea>
             </div>
 
             <!-- Если необходимо добавить чекбокс для публичности, например: -->
@@ -40,7 +40,7 @@
 
             <!-- Кнопка создания -->
             <div class="text-center">
-              <button type="submit" class="btn btn-success">Создать заметку</button>
+              <button type="submit" class="btn btn-success">Создать новый проект</button>
             </div>
 
           </form>

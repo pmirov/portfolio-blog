@@ -83,7 +83,7 @@
                     <div class="bg-primary text-white text-center rounded-top p-1"><h5 class="card-title" th:text="${diary.title}">Делаю сайт-портфолио</h5></div>
                     <div class="card-body">
                         <div class="post-meta mb-2">
-                            <span><i class="far fa-calendar"></i> 10 мая 2023</span>
+                            <span th:text="${#temporals.format(diary.createdAt, 'dd.MM.yyyy')}" class="small text-muted"><i class="far fa-calendar"></i> 10 мая 2023</span>
 <!--                            <span><i class="far fa-comments"></i> 12 комментариев</span>-->
                         </div>
                         <p class="card-text" th:text="${diary.content}">Описание моей работы над портфолио...</p>

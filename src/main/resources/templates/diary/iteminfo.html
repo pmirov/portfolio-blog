@@ -4,7 +4,7 @@
       layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Дневник</title>
+    <title>Заметка</title>
 </head>
 <body>
     <div layout:fragment="content" class="container pt-5 mt-5">
@@ -14,9 +14,9 @@
                 <div class="card shadow">
                     <div class="card-body text-center">
                         <!-- Заголовок записи -->
-                        <h2 th:text="${diaryEntry.title}">Название записи</h2>
+                        <h2 th:text="${diaryEntry.title}">Название заметки</h2>
                         <!-- Дата создания записи -->
-                        <p class="card-text text-muted" th:text="${diaryEntry.createdAt}">Дата создания</p>
+                        <p class="card-text text-muted" th:text="${#temporals.format(diaryEntry.createdAt, 'dd.MM.yyyy HH:mm')}">Дата создания</p>
                         <!-- Контент записи -->
                         <p class="card-text" th:text="${diaryEntry.content}">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cum modi natus, neque qui quos reiciendis repellat similique sint tenetur!
@@ -25,6 +25,7 @@
                         <div class="d-flex justify-content-center gap-3">
                             <a th:href="@{|/diary/edit/${diaryEntry.id}|}" class="btn btn-outline-primary">Редактировать</a>
                             <a th:href="@{|/diary/delete/${diaryEntry.id}|}" class="btn btn-outline-danger">Удалить</a>
+                            <a th:href="@{/diary}" class="btn btn-outline-primary">Перейти в дневник</a>
                         </div>
                     </div>
                 </div>
