@@ -30,8 +30,20 @@ public class User {
     @Column(nullable = false, unique = true, length = 50)
     private String username;
 
+    public String getUsername() {
+        return username;
+    }
+
     @Column(nullable = false, unique = true, length = 100)
     private String email;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
 
     @Column(nullable = false, length = 100)
     private String password;
