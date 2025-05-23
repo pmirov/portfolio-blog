@@ -26,7 +26,6 @@ public class User {
     }
 
 
-
     @Column(nullable = false, unique = true, length = 50)
     private String username;
 
@@ -73,6 +72,7 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL) //разобраться
     @Builder.Default
     private List<Comment> comments = new ArrayList<>();
-
-
 }
+
+
+

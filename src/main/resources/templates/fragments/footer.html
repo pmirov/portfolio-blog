@@ -36,7 +36,7 @@
                 <p class="mb-0">&copy; 2025 Павел Мировщиков. Все права защищены.</p>
             </div>
             <div class="col-md-6 text-center text-md-end">
-                <a href="admin/login.html" class="text-white text-decoration-none">Панель администратора</a>
+                <a href="admin/login.html" class="text-white text-decoration-none" sec:authorize="hasAuthority('ADMIN')">Панель администратора</a>
             </div>
         </div>
     </div>

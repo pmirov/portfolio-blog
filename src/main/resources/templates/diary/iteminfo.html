@@ -23,8 +23,8 @@
                         </p>
                         <!-- Кнопки действий -->
                         <div class="d-flex justify-content-center gap-3">
-                            <a th:href="@{|/diary/edit/${diaryEntry.id}|}" class="btn btn-outline-primary">Редактировать</a>
-                            <a th:href="@{|/diary/delete/${diaryEntry.id}|}" class="btn btn-outline-danger">Удалить</a>
+                            <a th:href="@{|/diary/edit/${diaryEntry.id}|}" class="btn btn-outline-primary" sec:authorize="hasAuthority('ADMIN')">Редактировать</a>
+                            <a th:href="@{|/diary/delete/${diaryEntry.id}|}" class="btn btn-outline-danger" sec:authorize="hasAuthority('ADMIN')">Удалить</a>
                             <a th:href="@{/diary}" class="btn btn-outline-primary">Перейти в дневник</a>
                         </div>
                     </div>

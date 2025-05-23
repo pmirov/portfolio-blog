@@ -25,8 +25,16 @@
                 </li>
             </ul>
             <div class="d-flex">
-                <a href="/users/login" class="btn btn-outline-light me-2">Войти</a>
-                <a href="register.html" class="btn btn-primary">Регистрация</a>
+                <!-- Для неаутентифицированных пользователей -->
+                <div sec:authorize="!isAuthenticated()">
+                    <a href="/users/login" class="btn btn-outline-light me-2">Войти</a>
+                    <a href="/users/registration" class="btn btn-primary">Регистрация</a>
+                </div>
+                <!-- Для аутентифицированных пользователей -->
+                <div sec:authorize="isAuthenticated()">
+                    <span class="navbar-text me-2" th:text="${#authentication.name}"></span>
+                    <a href="/logout" class="btn btn-outline-light">Выйти</a>
+                </div>
             </div>
         </div>
     </div>

@@ -28,7 +28,7 @@
                     </h2>
                     <p class="text-center" th:text="${project.description}">Описание проекта</p>
                 </div>
-                <div class="d-flex justify-content-center mt-4">
+                <div class="d-flex justify-content-center mt-4" sec:authorize="hasAuthority('ADMIN')">
                     <a th:href="@{/project/newproject}" class="btn btn-success">Добавить новый проект</a>
                 </div>
             </div>
