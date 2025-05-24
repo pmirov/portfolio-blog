@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout.html}">
+      layout:decorate="~{layout.html}" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Мой дневник</title>
@@ -27,6 +27,7 @@
                 <p class="card-text text-muted" th:text="${#temporals.format(diary.createdAt, 'dd.MM.yyyy HH:mm')}">Дата создания</p>
 
                 <p class="text-center" th:text="${diary.content}">Описание заметки</p>
+                <p class="text-sm-center">Создатель заметки: <span th:text="${diary.user.getUsername()}"></span></p>
             </div>
 
             <!-- Кнопка "Добавить запись" под списком записей -->

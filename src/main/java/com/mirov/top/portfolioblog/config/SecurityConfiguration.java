@@ -29,7 +29,7 @@ public class SecurityConfiguration {
 
                         .requestMatchers("/","/users/login", "/login","/static/**",
                         "/users/registration", "/css/**", "/js/**", "/img/**", "/error").permitAll()
-                        .requestMatchers("/admin/**", "/diary/new", "/project/newproject").hasRole(ADMIN.getAuthority())
+                        .requestMatchers("/admin/**", "/diary/new", "/project/newproject").hasAuthority(ADMIN.getAuthority())
                         .requestMatchers(antMatcher("/users/{\\d}/delete"), antMatcher("/diary/delete/{\\d}"),antMatcher("/project/delete/{\\d}")).hasAnyAuthority(ADMIN.getAuthority())
                         .anyRequest().authenticated())
                         .formLogin(login -> login

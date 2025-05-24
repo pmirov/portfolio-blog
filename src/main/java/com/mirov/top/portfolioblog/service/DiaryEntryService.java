@@ -1,8 +1,10 @@
 package com.mirov.top.portfolioblog.service;
 
 import com.mirov.top.portfolioblog.entity.DiaryEntry;
+import com.mirov.top.portfolioblog.entity.EntryImage;
 import com.mirov.top.portfolioblog.entity.Project;
 import com.mirov.top.portfolioblog.repository.DiaryEntryRepository;
+import com.mirov.top.portfolioblog.repository.EntryImageRepository;
 import com.mirov.top.portfolioblog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,11 +17,13 @@ public class DiaryEntryService {
 
     private final DiaryEntryRepository diaryEntryRepository;
     private final UserRepository userRepository;
+    private final EntryImageRepository entryImageRepository;
 
     @Autowired
-    public DiaryEntryService(DiaryEntryRepository diaryEntryRepository, UserRepository userRepository) {
+    public DiaryEntryService(DiaryEntryRepository diaryEntryRepository, UserRepository userRepository, EntryImageRepository entryImageRepository) {
         this.diaryEntryRepository = diaryEntryRepository;
         this.userRepository = userRepository;
+        this.entryImageRepository = entryImageRepository;
     }
 
     public List<DiaryEntry> findAllByUserId(Integer userId) {
@@ -57,4 +61,6 @@ public class DiaryEntryService {
         diaryEntry.getUpdatedAt();
         return diaryEntryRepository.save(diaryEntry);
     }
+
+
 }
